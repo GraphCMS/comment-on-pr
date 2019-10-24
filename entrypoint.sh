@@ -32,7 +32,7 @@ end
 message = ARGV.join(' ')
 
 coms = github.issue_comments(repo, pr["number"])
-duplicate = coms.find { |c| c["user"]["login"] == "github-actions[bot]" && c["body"] == message }
+duplicate = coms.find { |c| c["user"]["login"] == "github-actions[bot]" && c["body"] == message % {:number => pr["number"]}}
 
 if duplicate
   puts "The PR already contains a database change notification"

@@ -39,4 +39,4 @@ if duplicate
   exit(0)
 end
 
-github.add_comment(repo, pr["number"], message % pr["number"])
+github.add_comment(repo, pr["number"], message % {:number => pr["number"]})
